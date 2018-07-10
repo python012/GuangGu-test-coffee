@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('login_action/', views.login_action, name='login_action'),
+    path('event_manage/', views.event_manage, name='event_manage'),
+    path('accounts/login/', views.index, name='index'),
 ]

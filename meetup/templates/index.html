@@ -8,10 +8,17 @@
         .center {
             text-align: center;
         }
+
+        .manage-link {
+            font-size: 0.8em;
+        }
     </style>
     <title>Guang Gu Test Coffee</title>
 </head>
 <body>
+    <div style="float:right;">
+        <a href="/admin/" class="manage-link">Management</a>
+    </div>
     <h1 class="center">Guang Gu Test Coffee</h1>
     <form action="/login_action/" class="center" method="POST">
         {{ error_message }}
