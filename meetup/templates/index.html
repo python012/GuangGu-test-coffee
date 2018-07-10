@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+    </style>
+    <title>Guang Gu Test Coffee</title>
+</head>
+<body>
+    <h1 class="center">Guang Gu Test Coffee</h1>
+    <form action="/login_action/" class="center" method="POST">
+        {{ error_message }}
+        <br>
+        <input name="username" type="text" placeholder="username" autocomplete="off"><br>
+        <input name="password" type="password" placeholder="password"><br>
+        <button id="signin" type="submit">Sign in</button>
+        {% csrf_token %}
+    </form>
+</body>
+</html>
