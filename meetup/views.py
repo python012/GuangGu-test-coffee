@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from meetup.models import MeetupEvent, Topic
 
 
 def index(request):
@@ -18,12 +19,14 @@ def login_action(request):
         if user is not None:
             auth.login(request, user)
             request.session['user'] = username
-            return HttpResponseRedirect('/event_manage/')
+            return HttpResponseRedirect('/topics_list/')
         else:
             return render(request, 'index.html', {'error_message': 'username or password is not correct!'})
 
 
 @login_required
-def event_manage(request):
+def topics_list(request):
     username = request.session.get('user', '')
-    return render(request, 'event_manage.html', {'user':username})
+    topics_list = Topic.objects.all()
+    
+    return render(request, "topics_list.html", {"user": username, "topics": topics_list})
