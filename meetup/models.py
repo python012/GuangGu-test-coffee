@@ -8,6 +8,9 @@ class MeetupEvent(models.Model):
 
     objects = models.Manager()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         ordering = ('meet_time',)
     
@@ -18,7 +21,7 @@ class Topic(models.Model):
     speaker = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     create_time = models.DateTimeField(auto_now=True)
-    meetup_events = models.ManyToManyField(MeetupEvent)
+    meetup_event = models.ManyToManyField(MeetupEvent)
 
     objects = models.Manager()
 
@@ -27,3 +30,4 @@ class Topic(models.Model):
 
     class Meta:
         ordering = ('create_time',)
+

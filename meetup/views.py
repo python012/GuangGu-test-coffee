@@ -30,3 +30,19 @@ def topics_list(request):
     topics_list = Topic.objects.all()
     
     return render(request, "topics_list.html", {"user": username, "topics": topics_list})
+
+
+@login_required
+def events_list(request):
+    username = request.session.get('user', '')
+    events_list = MeetupEvent.objects.all()
+
+    events_list_with_topics = []
+
+    for event in events_list:
+        involved_topics = Topic.objects.get(meetup_event = event)
+        item = (event, involved_topics)
+        events_list_with_topics.append(item)
+    
+    return render(request, "events_list.html", {"user": username, "events_list_with_topics": events_list_with_topics})
+

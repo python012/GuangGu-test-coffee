@@ -18,11 +18,11 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">Topics List</a>
-                    </li>
                     <li>
-                        <a href="/events_list/">Events List</a>
+                        <a href="/topics_list/">Topics List</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">Events List</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -33,27 +33,25 @@
         </div>
     </nav>
 
-    <!-- topics list -->
+    <!-- events list -->
     <div class="row" style="padding-top: 70px;">
         <div class="col-md-8">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Title</th>
-                        <th>Speaker</th>
-                        <th>Description</th>
-                        <th>Create_time</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Time</th>
+                        <th>Topics</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for topic in topics %}
+                    {% for event in events_list_with_topics %}
                     <tr>
-                        <td>{{ topic.id }}</td>
-                        <td>{{ topic.title }}</td>
-                        <td>{{ topic.speaker }}</td>
-                        <td>{{ topic.description }}</td>
-                        <td>{{ topic.create_time }}</td>
+                        <td>{{ event[0].name }}</td>
+                        <td>{{ event[0].address }}</td>
+                        <td>{{ event[0].meet_time }}</td>
+                        <td>{{ event[1][0].title }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
